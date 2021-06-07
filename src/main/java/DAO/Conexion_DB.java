@@ -19,11 +19,17 @@ public class Conexion_DB {
           System.out.println("ConeBBDD");
           Connection con=null;  // instacia una conexión
         try{
-            //registro del driver
+            //registro del driver local
+//            String driver = "com.mysql.cj.jdbc.Driver";
+//            String jdbcUrl = "jdbc:mysql://localhost:3306/gestor_huerto";
+//            String usuario = "root";
+//            String pass = "";
+            
+            //acceso BBDD heroku
             String driver = "com.mysql.cj.jdbc.Driver";
-            String jdbcUrl = "jdbc:mysql://localhost:3306/gestor_huerto";
-            String usuario = "root";
-            String pass = "";
+            String jdbcUrl = "jdbc:mysql://eu-cdbr-west-01.cleardb.com:3306/heroku_23638fac0af2477";
+            String usuario = "b932d6f9663017";
+            String pass = "2110581e";
             
             //Class.forName(driver).newInstance();
             Class.forName(driver);
