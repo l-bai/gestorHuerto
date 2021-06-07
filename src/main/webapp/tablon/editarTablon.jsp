@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tablon Anuncios</title>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
         <script src="../resources/js/tablon.js"></script>        
     </head>
     <body id="editaTablon">
