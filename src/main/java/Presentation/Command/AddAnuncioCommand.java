@@ -7,32 +7,29 @@ package Presentation.Command;
 
 import BLL.AnuncioBLL;
 import BLL.HorarioBLL;
+import static java.nio.charset.StandardCharsets.ISO_8859_1;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Lidia Baixauli de la Villa
+ * @author Lidia Baixauli de la Villa 
  */
 public class AddAnuncioCommand extends ICommand{
 
     @Override
-//    public void initPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//         //listado riego
-//         HorarioBLL horaBLL = new HorarioBLL();
-//         request.setAttribute("listaHorarioRiego", horaBLL.listaHorarios()); 
-//         //listado anuncios
-//         AnuncioBLL anuncioBLL= new AnuncioBLL();
-//         request.setAttribute("listaAnuncios", anuncioBLL.listaAnuncios());
-//    }
     
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
          int resultadoAlta=0;
          String anuncio = (request.getParameter("anuncioTxt")).trim();
-         System.out.println(anuncio);
-         if(anuncio!=null && !anuncio.equals("")){
+         //codificar el anuncio a utf-8
+        byte[] ptext = anuncio.getBytes(ISO_8859_1); 
+        String anuncioUtf = new String(ptext, UTF_8); 
+         
+         if(anuncioUtf!=null && !anuncioUtf.equals("")){
              AnuncioBLL anuncioBLL = new AnuncioBLL();
-             resultadoAlta = anuncioBLL.addAnuncio(anuncio);
+             resultadoAlta = anuncioBLL.addAnuncio(anuncioUtf);
         }
         if(resultadoAlta==1){
            request.setAttribute("addAnuncio", "ok");
