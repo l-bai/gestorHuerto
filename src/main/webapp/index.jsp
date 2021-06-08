@@ -3,7 +3,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Huerto Mandroca</title>
@@ -38,11 +38,11 @@
                     
                     <div class="camposForm">
                         <label for="email">Email*</label>
-                        <input type="text" name="email">
+                        <input type="text" id="email" name="email">
                     </div>
                     <div class="camposForm">
                         <label for="pass">Contraseña</label>
-                        <input type="password" name="pass"/>
+                        <input type="password" id="pass" name="pass"/>
                     </div>
                     <input class="centrado" type="submit" value="Login">
                
