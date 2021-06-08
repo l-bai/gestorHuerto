@@ -39,9 +39,9 @@ public class Controller extends HttpServlet {
             
             //comprueba si está o no conectado
             Usuario usuarioSesion = (Usuario)request.getSession().getAttribute("usuarioSesion");
-      if(usuarioSesion==null && !(operacion.equals("Login"))){
-        request.getRequestDispatcher("").forward(request,response);
-      }
+            if(usuarioSesion==null && !(operacion.equals("Login"))){
+            request.getRequestDispatcher("").forward(request,response);
+        }
             
             //carga de forma dinámica la clase que implementa ICommand
             ICommand command=
@@ -52,7 +52,7 @@ public class Controller extends HttpServlet {
             String nextPage=command.execute(request, response);
             new Dispatcher().procesa(request, response, nextPage);
                     
-            //request.getRequestDispatcher(operacion).forward(request,response);
+            
         } catch (Exception ex) {            
             ex.printStackTrace();
         }
