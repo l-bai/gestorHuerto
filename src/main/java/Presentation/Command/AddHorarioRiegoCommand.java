@@ -7,6 +7,8 @@ package Presentation.Command;
 
 import BLL.AnuncioBLL;
 import BLL.HorarioBLL;
+import static java.nio.charset.StandardCharsets.ISO_8859_1;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,21 +19,17 @@ import javax.servlet.http.HttpServletResponse;
 public class AddHorarioRiegoCommand extends ICommand{
 
     @Override
-//    public void initPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//         //listado riego
-//         HorarioBLL horaBLL = new HorarioBLL();
-//         request.setAttribute("listaHorarioRiego", horaBLL.listaHorarios()); 
-//         //listado anuncios
-//         AnuncioBLL anuncioBLL= new AnuncioBLL();
-//         request.setAttribute("listaAnuncios", anuncioBLL.listaAnuncios());
-//    }
+
     
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
        int resultadoAlta=0;
        String horario = (request.getParameter("horario")).trim();
-       if(horario!=null && !horario.equals("")){//si no en blanco
+       byte[] ptext = horario.getBytes(ISO_8859_1); 
+       String horarioUtf = new String(ptext, UTF_8); 
+       
+       if(horarioUtf!=null && !horarioUtf.equals("")){//si no en blanco
            HorarioBLL horarioBLL = new HorarioBLL();
-           resultadoAlta = horarioBLL.addHorarioRiego(horario);           
+           resultadoAlta = horarioBLL.addHorarioRiego(horarioUtf);           
        }
        if(resultadoAlta==1){
            request.setAttribute("addRiegoOk", "ok");

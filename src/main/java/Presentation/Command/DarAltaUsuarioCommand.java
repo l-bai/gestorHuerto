@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Presentation.Command;
 
 import BLL.ParcelaBLL;
@@ -11,6 +7,8 @@ import BLL.ValidacionFormulario;
 import Entidades.Usuario;
 import com.google.common.hash.Hashing;
 import java.nio.charset.StandardCharsets;
+import static java.nio.charset.StandardCharsets.ISO_8859_1;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -38,14 +36,19 @@ public class DarAltaUsuarioCommand extends ICommand{
        
         String parcela = request.getParameter("parcela");
         
+        //nombre a utf 8 por si hay caracteres especiales
+        byte[] ptext = nombre.getBytes(ISO_8859_1); 
+        String nombreUtf = new String(ptext, UTF_8); 
+       
+        //por si hay fallos que cargue lo introducido
         Usuario user = new Usuario();
-        user.setNombre(nombre);
+        user.setNombre(nombreUtf);
         user.setEmail(email);
 
 
         //validar si los campos son correctos, se comprueban todos
         ValidacionFormulario validaForm = new ValidacionFormulario();
-        if(!validaForm.validaNombresCompuestos(nombre)){
+        if(!validaForm.validaNombresCompuestos(nombreUtf)){
             request.setAttribute("errorNom", "noOk");
             validaDatos=false;
             //valida datos false
@@ -78,7 +81,7 @@ public class DarAltaUsuarioCommand extends ICommand{
         //guarda usuario si validación ok y dar de alta
         if(validaDatos){
             //Usuario user = new Usuario();
-            user.setNombre(nombre);
+            user.setNombre(nombreUtf);
             user.setEmail(email);
             //encripta password
               //encriptar contraseña
