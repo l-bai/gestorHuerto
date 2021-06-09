@@ -32,7 +32,7 @@
                             Usuario user = (Usuario)listaUsuarios.get(i);                           
                        %>
                         <option value="<%=user.getEmail()%>"> 
-                            <%=user.getEmail()%>                        
+                            <%=user.getEmail()%> <%=user.getRol()==1?" - Arrendatario":" - Administrador"%>                       
                         </option>
                        <%
                         }

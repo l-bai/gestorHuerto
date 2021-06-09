@@ -32,6 +32,7 @@
       String bajaOk = (String)request.getAttribute("bajaOk");
       Parcela parcelaError = (Parcela)request.getAttribute("errorDesasigna");
       String errorBaja = (String)request.getAttribute("errorBaja");
+      String adminUnico = (String)request.getAttribute("adminUnico");
       if(parcelaLibre!=null){
   %>
       <p class="exito">La parcela <%=parcelaLibre.getId()%> está libre</p>
@@ -49,8 +50,13 @@
   %>
       <p class="error">El usuario <%=errorBaja%> no se ha eliminado.</p>
   <%
-      }    
+      }if(adminUnico!=null){
   %>
+      <p class="error"><%=adminUnico%></p>
+   <% 
+      }    
+   %>    
+  
 
   <div class="menuGestion">
       <div class="menuAdmin">
