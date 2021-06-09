@@ -45,5 +45,5 @@
             
         </form>
                     
-        <p>Sólo está autorizado a borrar arrendatarios. Para la gestión de administradores debe habilitar el módulo de gestión avanzada </p>            
+                 
 

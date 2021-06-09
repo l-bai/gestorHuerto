@@ -133,7 +133,7 @@ public class UsuarioDAO {
         public List<Usuario> listaUsuarios(Connection con) throws Exception{
         List<Usuario> listaUsuarios = new ArrayList();
         try{
-            sql = "SELECT * FROM usuarios"; //WHERE rol != 0";
+            sql = "SELECT * FROM usuarios ORDER BY rol DESC"; //WHERE rol != 0";
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();            
             Usuario user = null;
