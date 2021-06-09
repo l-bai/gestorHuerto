@@ -209,6 +209,30 @@ public class UsuarioDAO {
         return borrado;
     }
     
+    public int obtenNumAdministradores(Connection con) throws Exception{
+        int numAdmin = 1;
+        try{
+           sql = "SELECT Count(*) as total FROM usuarios WHERE rol=0" ;
+           stmt = con.prepareStatement(sql);
+           rs = stmt.executeQuery();
+            System.out.println("hola");
+            while (rs.next()){
+                numAdmin = rs.getInt("total");
+           }
+           
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("Ha habido un problema al borrar el usuario "+ex.getMessage());
+        } finally
+        {
+            if (rs != null) rs.close(); //Cerramos el resulset
+            if (stmt != null) stmt.close();//Cerramos el Statement 
+        }
+        return numAdmin;
+    
+    
+    }
+    
     
     
     

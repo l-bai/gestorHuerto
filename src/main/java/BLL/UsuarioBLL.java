@@ -123,7 +123,7 @@ public class UsuarioBLL {
                 
     }
     
-        public int bajaUsuarioEmail(String email) throws Exception{
+    public int bajaUsuarioEmail(String email) throws Exception{
         int borrado = 0;
         Connection con = null;
         try {  
@@ -138,4 +138,20 @@ public class UsuarioBLL {
         }
         return borrado;
     }
+        
+    public int obtenNumAdministradores() throws Exception{
+        int numAdmin = 1;
+        Connection con = null;
+        try {  
+            Conexion_DB conexion_DB = new Conexion_DB();
+            con = conexion_DB.abrirConexion();// Abrimos la conexión
+            UsuarioDAO userDAO=new UsuarioDAO();
+            numAdmin = userDAO.obtenNumAdministradores(con);
+            conexion_DB.CerrarConexion(con);
+            
+        } catch (Exception ex) {
+            System.out.println("Exception-> " + ex.getMessage());
+        }
+        return numAdmin;
+    } 
 }
