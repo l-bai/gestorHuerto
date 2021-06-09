@@ -19,7 +19,9 @@ public class BajaUsuarioCommand extends ICommand{
     public void initPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
          //listado parcelas disponibles
          UsuarioBLL userBLL = new UsuarioBLL();
-         request.setAttribute("listaUsuarios", userBLL.listaArrendatarios());
+         //request.setAttribute("listaUsuarios", userBLL.listaArrendatarios());
+         //muestra todos
+         request.setAttribute("listaUsuarios", userBLL.listaUsuarios());
      
      }
     
